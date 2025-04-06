@@ -10,6 +10,7 @@ public class Game1 : Game
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
     private Texture2D _stars;
+    private Texture2D _sheep;
 
     public Game1()
     {
@@ -30,6 +31,7 @@ public class Game1 : Game
         Console.WriteLine("chargement contenu");
         _spriteBatch = new SpriteBatch(GraphicsDevice);
         _stars = Content.Load<Texture2D>("stars");
+        _sheep = Content.Load<Texture2D>("sheep");
         Console.WriteLine("etoiles charges");
 
         // TODO: use this.Content to load your game content here
@@ -55,6 +57,7 @@ public class Game1 : Game
         _spriteBatch.Begin();
 
         _spriteBatch.Draw(_stars, new Rectangle(0, 0, 800, 480), Color.White);
+        _spriteBatch.Draw(_sheep, new Rectangle(0, 0, 800, 480), Color.White);
 
         _spriteBatch.End();
         Console.WriteLine("draw...");
