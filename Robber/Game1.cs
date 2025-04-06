@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -8,6 +9,7 @@ public class Game1 : Game
 {
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
+    private Texture2D _stars;
 
     public Game1()
     {
@@ -26,6 +28,7 @@ public class Game1 : Game
     protected override void LoadContent()
     {
         _spriteBatch = new SpriteBatch(GraphicsDevice);
+        _stars = Content.Load<Texture2D>("stars");
 
         // TODO: use this.Content to load your game content here
     }
@@ -45,6 +48,12 @@ public class Game1 : Game
         GraphicsDevice.Clear(Color.CornflowerBlue);
 
         // TODO: Add your drawing code here
+
+        _spriteBatch.Begin();
+
+        _spriteBatch.Draw(_stars, new Rectangle(0, 0, 800, 480), Color.White);
+
+        _spriteBatch.End();
 
         base.Draw(gameTime);
     }
