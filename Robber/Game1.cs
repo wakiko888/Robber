@@ -57,7 +57,7 @@ public class Game1 : Game
         _spriteBatch.Begin();
 
         _spriteBatch.Draw(_stars, new Rectangle(0, 0, 800, 480), Color.White);
-        _spriteBatch.Draw(_sheep, new Rectangle(0, 0, 800, 480), Color.White);
+        _spriteBatch.Draw(_sheep, new Rectangle(200, 120, 400, 240), Color.White);
 
         _spriteBatch.End();
         Console.WriteLine("draw...");
