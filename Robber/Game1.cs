@@ -29,6 +29,7 @@ public class Game1 : Game
     {
         _spriteBatch = new SpriteBatch(GraphicsDevice);
         _stars = Content.Load<Texture2D>("stars");
+        Console.WriteLine("chargement etoiles fini");
 
         // TODO: use this.Content to load your game content here
     }
