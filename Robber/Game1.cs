@@ -27,9 +27,10 @@ public class Game1 : Game
 
     protected override void LoadContent()
     {
+        Console.WriteLine("chargement contenu");
         _spriteBatch = new SpriteBatch(GraphicsDevice);
         _stars = Content.Load<Texture2D>("stars");
-        Console.WriteLine("chargement etoiles fini");
+        Console.WriteLine("etoiles charges");
 
         // TODO: use this.Content to load your game content here
     }
