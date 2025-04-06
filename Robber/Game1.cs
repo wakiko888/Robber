@@ -41,8 +41,9 @@ public class Game1 : Game
             Exit();
 
         // TODO: Add your update logic here
-
+        Console.WriteLine("update logic");
         base.Update(gameTime);
+
     }
 
     protected override void Draw(GameTime gameTime)
@@ -56,6 +57,7 @@ public class Game1 : Game
         _spriteBatch.Draw(_stars, new Rectangle(0, 0, 800, 480), Color.White);
 
         _spriteBatch.End();
+        Console.WriteLine("draw...");
 
         base.Draw(gameTime);
     }
