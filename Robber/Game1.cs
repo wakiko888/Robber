@@ -13,11 +13,13 @@ public class Game1 : Game
     private SpriteBatch _spriteBatch;
     private Texture2D _stars;
     private Texture2D _sheep;
+    private Texture2D _ob;
 
     private Vector2 _sheepPosition;
 
     public Game1()
     {
+        Window.AllowUserResizing = true;
         _graphics = new GraphicsDeviceManager(this);
         Content.RootDirectory = "Content";
         IsMouseVisible = true;
@@ -36,6 +38,7 @@ public class Game1 : Game
         _spriteBatch = new SpriteBatch(GraphicsDevice);
         _stars = Content.Load<Texture2D>("stars");
         _sheep = Content.Load<Texture2D>("sheep");
+        _ob = Content.Load<Texture2D>("ob");
         _sheepPosition = new Vector2(200, 200); // valeur par défaut
 
         //Console.WriteLine("etoiles charges");
@@ -81,7 +84,11 @@ public class Game1 : Game
 
         _spriteBatch.Begin();
         //Console.WriteLine(increm);
-        _spriteBatch.Draw(_stars, new Rectangle(0, 0, 800, 480), Color.White);
+        int width = GraphicsDevice.Viewport.Width;
+        int height = GraphicsDevice.Viewport.Height;
+
+        //_spriteBatch.Draw(_stars, new Rectangle(0, 0, width, height), Color.White);
+        _spriteBatch.Draw(_ob, new Rectangle(0, 0, width, height), Color.White);
         _spriteBatch.Draw(_sheep, new Rectangle((int)_sheepPosition.X - 200, (int)_sheepPosition.Y - 75, 400, 150), Color.White);
 
         _spriteBatch.End();
