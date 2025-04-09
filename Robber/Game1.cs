@@ -9,11 +9,15 @@ public class Game1 : Game
 {
     private bool _isAlreadyPressed = false;
     private int increm = 200;
+
+    private float speed_perso = 0;
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
     private Texture2D _stars;
     private Texture2D _sheep;
     private Texture2D _ob;
+    private Texture2D _oob;
+    private Texture2D _persomoi;
 
     private Vector2 _sheepPosition;
 
@@ -22,7 +26,7 @@ public class Game1 : Game
         Window.AllowUserResizing = true;
         _graphics = new GraphicsDeviceManager(this);
         Content.RootDirectory = "Content";
-        IsMouseVisible = true;
+        IsMouseVisible = false;
     }
 
     protected override void Initialize()
@@ -39,6 +43,9 @@ public class Game1 : Game
         _stars = Content.Load<Texture2D>("stars");
         _sheep = Content.Load<Texture2D>("sheep");
         _ob = Content.Load<Texture2D>("ob");
+        _oob = Content.Load<Texture2D>("oob");
+        _persomoi = Content.Load<Texture2D>("persomoi");
+
         _sheepPosition = new Vector2(200, 200); // valeur par défaut
 
         //Console.WriteLine("etoiles charges");
@@ -55,6 +62,8 @@ public class Game1 : Game
         MouseState mouseState = Mouse.GetState();
         _sheepPosition = new Vector2(mouseState.X, mouseState.Y);
         //Console.WriteLine($"Souris : X = {mouseState.X}, Y = {mouseState.Y}");
+
+        speed_perso = (float)(speed_perso + 0.1);
 
         if (mouseState.LeftButton == ButtonState.Pressed)
         {
@@ -89,7 +98,9 @@ public class Game1 : Game
 
         //_spriteBatch.Draw(_stars, new Rectangle(0, 0, width, height), Color.White);
         _spriteBatch.Draw(_ob, new Rectangle(0, 0, width, height), Color.White);
-        _spriteBatch.Draw(_sheep, new Rectangle((int)_sheepPosition.X - 200, (int)_sheepPosition.Y - 75, 400, 150), Color.White);
+        _spriteBatch.Draw(_sheep, new Rectangle((int)_sheepPosition.X - 15, (int)_sheepPosition.Y - 15, 30, 30), Color.White);
+        //_spriteBatch.Draw(_oob, new Rectangle(0, 0, width, height), Color.White);
+        _spriteBatch.Draw(_persomoi, new Rectangle(0, 0, 32, 48), Color.White);
 
         _spriteBatch.End();
 
