@@ -21,8 +21,6 @@ public class Game1 : Game
     private Texture2D _persomoi;
 
     private Vector2 _sheepPosition;
-
-    private float mouv_character = 0;
     MainCharacter Mc = new();
 
     public Game1()
@@ -66,7 +64,8 @@ public class Game1 : Game
         MouseState mouseState = Mouse.GetState();
         _sheepPosition = new Vector2(mouseState.X, mouseState.Y);
         //Console.WriteLine($"Souris : X = {mouseState.X}, Y = {mouseState.Y}");
-        mouv_character = mouv_character + (float)(Mc.ver_speed + Mc.gravity);
+        Mc.ver_speed = (float)(Mc.ver_speed + Mc.gravity);
+        Mc.Ypos = Mc.Ypos + Mc.ver_speed;
         if (mouseState.LeftButton == ButtonState.Pressed)
         {
             if (!_isAlreadyPressed)
@@ -102,7 +101,7 @@ public class Game1 : Game
         _spriteBatch.Draw(_ob, new Rectangle(0, 0, width, height), Color.White);
         _spriteBatch.Draw(_sheep, new Rectangle((int)_sheepPosition.X - 15, (int)_sheepPosition.Y - 15, 30, 30), Color.White);
         //_spriteBatch.Draw(_oob, new Rectangle(0, 0, width, height), Color.White);
-        _spriteBatch.Draw(_persomoi, new Rectangle(0, (int)(mouv_character), 32, 48), Color.White);
+        _spriteBatch.Draw(_persomoi, new Rectangle((int)Mc.Xpos, (int)(Mc.Ypos), 32, 48), Color.White);
 
         _spriteBatch.End();
 
