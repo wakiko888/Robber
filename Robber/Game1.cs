@@ -61,11 +61,29 @@ public class Game1 : Game
             Exit();
         increm--;
 
+        KeyboardState keyboardState = Keyboard.GetState();
+
+        if (keyboardState.IsKeyDown(Keys.A))
+        {
+            Mc.hor_speed = -10;
+        }
+
+        if (keyboardState.IsKeyDown(Keys.D))
+        {
+            Mc.hor_speed = 10;
+        }
+
+        if (keyboardState.IsKeyUp(Keys.A) && keyboardState.IsKeyUp(Keys.D))
+        {
+            Mc.hor_speed = 0;
+        }
+
         MouseState mouseState = Mouse.GetState();
         _sheepPosition = new Vector2(mouseState.X, mouseState.Y);
         //Console.WriteLine($"Souris : X = {mouseState.X}, Y = {mouseState.Y}");
         Mc.ver_speed = (float)(Mc.ver_speed + Mc.gravity);
         Mc.Ypos = Mc.Ypos + Mc.ver_speed;
+        Mc.Xpos = Mc.Xpos + Mc.hor_speed;
         if (mouseState.LeftButton == ButtonState.Pressed)
         {
             if (!_isAlreadyPressed)
