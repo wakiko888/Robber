@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Robber.new_class;
 
 namespace Robber;
 
@@ -9,7 +10,6 @@ public class Game1 : Game
 {
     private bool _isAlreadyPressed = false;
     private int increm = 200;
-
     private float speed_perso = 0;
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
