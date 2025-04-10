@@ -57,10 +57,25 @@ public class Game1 : Game
 
     protected override void Update(GameTime gameTime)
     {
+
         if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
             Exit();
         increm--;
+        int width = GraphicsDevice.Viewport.Width;
+        int height = GraphicsDevice.Viewport.Height;
+        if (Mc.Ypos > height)
+        {
+            Mc.Ypos = 0;
+        }
+        if (Mc.Xpos > width)
+        {
+            Mc.Xpos = 0;
+        }
 
+        if (Mc.Xpos < -1)
+        {
+            Mc.Xpos = width;
+        }
         KeyboardState keyboardState = Keyboard.GetState();
 
         if (keyboardState.IsKeyDown(Keys.A))
@@ -112,9 +127,9 @@ public class Game1 : Game
 
         _spriteBatch.Begin();
         //Console.WriteLine(increm);
+
         int width = GraphicsDevice.Viewport.Width;
         int height = GraphicsDevice.Viewport.Height;
-
         //_spriteBatch.Draw(_stars, new Rectangle(0, 0, width, height), Color.White);
         _spriteBatch.Draw(_ob, new Rectangle(0, 0, width, height), Color.White);
         _spriteBatch.Draw(_sheep, new Rectangle((int)_sheepPosition.X - 15, (int)_sheepPosition.Y - 15, 30, 30), Color.White);
