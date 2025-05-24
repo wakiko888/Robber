@@ -88,9 +88,24 @@ public class Game1 : Game
             Mc.hor_speed = 10;
         }
 
+        if (keyboardState.IsKeyDown(Keys.W))
+        {
+            Mc.ver_speed = -10;
+        }
+
+        if (keyboardState.IsKeyDown(Keys.S))
+        {
+            Mc.ver_speed = 10;
+        }
+
         if (keyboardState.IsKeyUp(Keys.A) && keyboardState.IsKeyUp(Keys.D))
         {
             Mc.hor_speed = 0;
+        }
+
+        if (keyboardState.IsKeyUp(Keys.W) && keyboardState.IsKeyUp(Keys.S))
+        {
+            Mc.ver_speed = 0;
         }
 
         MouseState mouseState = Mouse.GetState();
@@ -134,7 +149,7 @@ public class Game1 : Game
         _spriteBatch.Draw(_ob, new Rectangle(0, 0, width, height), Color.White);
         _spriteBatch.Draw(_sheep, new Rectangle((int)_sheepPosition.X - 15, (int)_sheepPosition.Y - 15, 30, 30), Color.White);
         //_spriteBatch.Draw(_oob, new Rectangle(0, 0, width, height), Color.White);
-        _spriteBatch.Draw(_persomoi, new Rectangle((int)Mc.Xpos, (int)(Mc.Ypos), 32, 48), Color.White);
+        _spriteBatch.Draw(_persomoi, new Rectangle((int)Mc.Xpos, (int)(Mc.Ypos), Mc.Width_character, Mc.Height_character), Color.White);
 
         _spriteBatch.End();
 
