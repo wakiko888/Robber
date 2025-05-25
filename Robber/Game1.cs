@@ -21,6 +21,15 @@ public class Game1 : Game
     private Texture2D _persomoi;
 
     private Vector2 _sheepPosition;
+
+    private int Wall_width = 100;
+
+    private int Wall_Height = 20;
+
+    private int Wall_X = 175;
+
+    private int Wall_Y = 150;
+
     MainCharacter Mc = new();
 
     public Game1()
@@ -77,6 +86,38 @@ public class Game1 : Game
             Mc.Xpos = width;
         }
         KeyboardState keyboardState = Keyboard.GetState();
+
+        if
+        (
+            Mc.Xpos < Wall_X + Wall_width &&
+            Mc.Ypos < Wall_Y + Wall_Height &&
+            Mc.Ypos > Wall_Y &&
+            Mc.Xpos > Wall_X
+        )
+        {
+            Mc.Xpos = Mc.Xpos + 10;
+            Console.WriteLine("dsfsedfwsf");
+        }
+        else
+        {
+            Mc.hor_speed = -10;
+        }
+
+        if
+        (
+            Mc.Xpos + Mc.Width_character < Wall_X + Wall_width &&
+            Mc.Ypos + Mc.Height_character < Wall_Y + Wall_Height &&
+            Mc.Ypos + Mc.Height_character > Wall_Y &&
+            Mc.Xpos + Mc.Width_character > Wall_X
+        )
+        {
+            Mc.Xpos = Mc.Xpos + 10;
+            Console.WriteLine("dsfsedfwsf");
+        }
+        else
+        {
+            Mc.hor_speed = -10;
+        }
 
         if (keyboardState.IsKeyDown(Keys.A))
         {
@@ -150,6 +191,8 @@ public class Game1 : Game
         _spriteBatch.Draw(_sheep, new Rectangle((int)_sheepPosition.X - 15, (int)_sheepPosition.Y - 15, 30, 30), Color.White);
         //_spriteBatch.Draw(_oob, new Rectangle(0, 0, width, height), Color.White);
         _spriteBatch.Draw(_persomoi, new Rectangle((int)Mc.Xpos, (int)(Mc.Ypos), Mc.Width_character, Mc.Height_character), Color.White);
+
+        _spriteBatch.Draw(_persomoi, new Rectangle(Wall_X, Wall_Y, Wall_width, Wall_Height), Color.White);
 
         _spriteBatch.End();
 
