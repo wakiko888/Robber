@@ -95,28 +95,11 @@ public class Game1 : Game
             Mc.Xpos > Wall_X
         )
         {
-            Mc.Xpos = Mc.Xpos + 10;
             Console.WriteLine("dsfsedfwsf");
         }
         else
         {
-            Mc.hor_speed = -10;
-        }
 
-        if
-        (
-            Mc.Xpos + Mc.Width_character < Wall_X + Wall_width &&
-            Mc.Ypos + Mc.Height_character < Wall_Y + Wall_Height &&
-            Mc.Ypos + Mc.Height_character > Wall_Y &&
-            Mc.Xpos + Mc.Width_character > Wall_X
-        )
-        {
-            Mc.Xpos = Mc.Xpos + 10;
-            Console.WriteLine("dsfsedfwsf");
-        }
-        else
-        {
-            Mc.hor_speed = -10;
         }
 
         if (keyboardState.IsKeyDown(Keys.A))
@@ -129,25 +112,25 @@ public class Game1 : Game
             Mc.hor_speed = 10;
         }
 
-        if (keyboardState.IsKeyDown(Keys.W))
-        {
-            Mc.ver_speed = -10;
-        }
+        //if (keyboardState.IsKeyDown(Keys.W))
+        //{
+        //    Mc.ver_speed = -10;
+        //}
 
-        if (keyboardState.IsKeyDown(Keys.S))
-        {
-            Mc.ver_speed = 10;
-        }
+        //if (keyboardState.IsKeyDown(Keys.S))
+        //{
+        //    Mc.ver_speed = 10;
+        //}
 
         if (keyboardState.IsKeyUp(Keys.A) && keyboardState.IsKeyUp(Keys.D))
         {
             Mc.hor_speed = 0;
         }
 
-        if (keyboardState.IsKeyUp(Keys.W) && keyboardState.IsKeyUp(Keys.S))
-        {
-            Mc.ver_speed = 0;
-        }
+        //if (keyboardState.IsKeyUp(Keys.W) && keyboardState.IsKeyUp(Keys.S))
+        //{
+        //    Mc.ver_speed = 0;
+        //}
 
         MouseState mouseState = Mouse.GetState();
         _sheepPosition = new Vector2(mouseState.X, mouseState.Y);
